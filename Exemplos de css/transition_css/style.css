@@ -1,0 +1,79 @@
+body{
+    font-family: sans-serif;
+    color: white;
+    max-width: 600px;
+    margin:auto;
+}
+.contaier { /*centralizar o card no navegador*/
+    width: 100px;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.card { /**/
+    width: 600px;
+    height: 640px;
+    background-image: url("./landspace.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;/* faz com img fique com sua tonalidade*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    filter: grayscale(0.5);/*um efieto de imagem*/
+    color: rgb(14, 14, 14);
+    cursor: pointer;/* cursor no mouse como ponteiro sobre o elemento*/
+    transition: 0.3s;/*a transição entre dois elementos*/
+}
+
+.card-wrapper{/*o conteudo do card*/
+    text-align:center ;
+    display: flex;
+    flex-direction: column;/*alinhar em abaixo do outro*/
+    justify-content: center;
+    align-items: center;
+    position: relative;/*mexer um pseudo elemneto e colocar um efeito de borda*/
+}
+
+.card-wrapper::before{/*pseudo elemento do card_wrapper*/
+    content: "";/*o content vazio para não startar o hover antes do tempo, no caso antes de colocar o mouse em cima*/
+    position: absolute;
+    height: 100px;
+    width: 100px;
+    display: block;
+    border: 1px solid white;
+    opacity: 0;
+    translate: 0.3s;
+}
+
+.card-wrapper h2{
+    font-size: 40px;
+    text-transform: uppercase;
+    letter-spacing: 4px; /*espeaço em cada letra*/
+    margin: 0;
+    transition: 0.3s;
+}
+
+.card-wrapper p{
+    font-size: 0px;
+    visibility: hidden;/*ele deixa de ser visível na página, mas seu espaço continua ocupado, o layout não é alterado*/
+    opacity: 0;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: 0.3s;
+}
+.card:hover{
+    filter: unset;/*tira o filtro colocado no começo, quando passa o mouse em cima.*/
+}
+
+.card:hover > .card-wrapper::before{/*conteúdo do card before dentro do hover. No caso a borda vai aparecer passando o mouse por cima*/
+    height: 300px;
+    width: 400px;
+    opacity: 1;
+}
+.card:hover > .card-wrapper p{ /*conteudo do card  p dentro do hover. No caso quando passar o mouse por cima irá aparecer as informações de p, que estavam ocultas. */
+    opacity: 1;
+    visibility: visible;
+    font-size: 14px;
+}
